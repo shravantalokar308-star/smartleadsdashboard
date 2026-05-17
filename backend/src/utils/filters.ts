@@ -8,7 +8,7 @@ export const buildQuery = (query: any) => {
     { name: { $regex: query.search, $options: 'i' } },
     { email: { $regex: query.search, $options: 'i' } }
   ];
-  const sort = query.sort === 'oldest' ? { createdAt: 1 } : { createdAt: -1 };
+  const sort = query.sort === 'oldest' ? { createdAt: 1 as const } : { createdAt: -1 as const };
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 10;
   return { filter, sort, page, limit };

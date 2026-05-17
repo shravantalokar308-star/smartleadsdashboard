@@ -14,7 +14,7 @@ export const getLeads = asyncHandler(async (req: Request, res: Response) => {
 
 export const getLead = asyncHandler(async (req: Request, res: Response) => {
   const lead = await leadService.getLeadById(req.params.id);
-  if (!lead) return res.status(404).json({ message: 'Not found' });
+  if (!lead) { res.status(404).json({ message: 'Not found' }); return; }
   res.json(lead);
 });
 
